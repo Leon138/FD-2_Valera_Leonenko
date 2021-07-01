@@ -1,0 +1,28 @@
+@import '../components/login/login.scss';
+@import '../components/register/register.scss';
+
+.header {
+  height: 9vh;
+  display: flex;
+  align-items: center;
+  background-color: rgb(61, 61, 61);
+  justify-content: flex-end;
+  padding: 0 20px;
+  
+  &__btn {
+    display: flex;
+    background-color: red;
+    color: white;
+    width: 85px;
+    padding-left: 18px;
+    font-size: 18px;
+  }
+  .btn-warning {
+    width: 75px;
+    height: 40px;
+    padding-left: 10px;
+    margin-left: 20px;
+    color: white;
+  }
+
+}
