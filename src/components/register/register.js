@@ -1,8 +1,8 @@
-import { register } from "../../api/api-handlers";
-import { routes } from "../../shared/routes/routes";
-import { setUserEmail } from "../../shared/service";
+import { register } from '../../api/api-handlers';
+import { routes } from '../../shared/routes/routes';
+import { setUserEmail } from '../../shared/service';
 
-export const Register = () => {
+export const registers = () => {
   const RegisterForm = document.querySelector('.register__form');
 
   RegisterForm.addEventListener('submit', event => {

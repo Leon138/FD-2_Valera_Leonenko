@@ -28,7 +28,7 @@ export const logoutBtn = () => {
 
 }
 
-export const RegisterBtn = () => {
+export const registerBtn = () => {
   const RegisterBtn = document.getElementById('RegisterBtn');
 
   RegisterBtn.onclick = () => {

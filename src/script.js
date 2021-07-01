@@ -1,12 +1,10 @@
-import { loginBtn, RegisterBtn, logoutBtn } from './components/profile/profile';
-import { LoginHandler } from './components/login/login';
+import { loginBtn, registerBtn, logoutBtn } from './components/profile/profile';
+import { loginHandler } from './components/login/login';
 import { routes, paths } from './shared/routes/routes';
-import { Register } from './components/register/register';
+import { registers } from './components/register/register';
 import './styles/styles.scss';
 
-
 window.onload = () => {
-
   const pathname = Object.values(paths).find( path => path === window.location.pathname );
  
   switch (pathname) {
@@ -15,11 +13,11 @@ window.onload = () => {
       logoutBtn();
       break;
     case paths.login:
-      LoginHandler();
-      RegisterBtn();
+      loginHandler();
+      registerBtn();
       break;
     case paths.register:
-      Register();
+      registers();
     default:
       break;  
   }

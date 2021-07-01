@@ -2,7 +2,7 @@ import { login } from '../../api/api-handlers';
 import { setToken } from '../../shared/service';
 import { routes } from '../../shared/routes/routes';
 
-export const LoginHandler = () => {
+export const loginHandler = () => {
   const LoginForm = document.querySelector('.login__form');
 
   LoginForm.addEventListener('submit', event => {
