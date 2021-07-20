@@ -1,8 +1,14 @@
 import { signIn } from '../../api/api-handlers';
 import { setToken } from '../../shared/ls-sevice';
 import { routes } from '../../shared/constants/routes';
-import { passwordLengthValidator } from '../../shared/validators';
-import { showFormErrorMessage, hideFormErrorMessage } from '../../shared/error-handlers';
+import { emailValidator, passwordLengthValidator } from '../../shared/validators';
+import { 
+  showPasswordLengthErrorMessage, 
+  hidePasswordLengthErrorMessage, 
+  showEmailLengthErrorMessage, 
+  hideEmailLengthErrorMessage,
+} from '../../shared/error-handlers';
+
 
 export const signInHandler = () => {
   const signInForm = document.querySelector('.sign-in__form');
@@ -12,7 +18,7 @@ export const signInHandler = () => {
   
   const formFields = {
     email: {
-      isValid: true
+      isValid: false
     },
     password: {
       isValid: false
@@ -35,11 +41,13 @@ export const signInHandler = () => {
   });
 
   passwordInput.oninput = () => {
-    if (passwordLengthValidator(passwordInput.value)) {
+    if (passwordLengthValidator(emailInput.value)) {
       formFields.password.isValid = true;
-      hideFormErrorMessage();
+      hidePasswordLengthErrorMessage();
+      passwordInput.classList.remove('invalid');
     } else {
       formFields.password.isValid = false;
+      passwordInput.classList.add('invalid');
     }
 
     checkFormValid();
@@ -47,9 +55,30 @@ export const signInHandler = () => {
 
   passwordInput.onblur = () => {
     if (!passwordLengthValidator(passwordInput.value)) {
-      showFormErrorMessage();
+      showPasswordLengthErrorMessage();
     } else {
-      hideFormErrorMessage();
+      hidePasswordLengthErrorMessage();
+    }
+  }
+
+  emailInput.oninput = () => {
+    if (emailValidator(emailInput.value)) {
+      formFields.email.isValid = true;
+      hideEmailLengthErrorMessage();
+      emailInput.classList.remove('invalid');
+    } else {
+      formFields.email.isValid = false;
+      emailInput.classList.add('invalid');
+    }
+
+    checkFormValid();
+  }
+
+  emailInput.onblur = () => {
+    if (!emailValidator(emailInput.value)) {
+      showEmailLengthErrorMessage();
+    } else {
+      hideEmailLengthFormErrorMessage();
     }
   }
 

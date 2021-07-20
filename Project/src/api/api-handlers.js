@@ -3,6 +3,7 @@ import firebase from 'firebase/app';
 import axios from 'axios';
 
 import { FIREBASE_CONFIG, databaseURL, authUrl } from './api-config.js';
+import { showErrorNotification } from '../shared/error-handlers.js';
 
 const headers = {
   'Content-Type': 'application/json'
@@ -50,7 +51,9 @@ export const signIn = (email, password) => {
     returnSecureToken: true
   })
     .then(response => response)
-    .catch(err => {console.log(err)});
+    .catch(err => {
+      showErrorNotification(err);
+    });
 }
 
 export const signUp = async (email, password) => {
